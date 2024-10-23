@@ -1,0 +1,76 @@
+.results-content {
+  display: flex;
+  flex-direction: column;
+
+  .lemons__image {
+    position: relative;
+
+    img {
+      height: 589px;
+      width: 100%;
+      object-fit: cover;
+      filter: brightness(0.5);
+    }
+  }
+}
+
+.results__headings {
+  position: absolute;
+  color: white;
+  text-align: center;
+  width: 50%;
+  left: 25%;
+  top: 15%;
+
+  .retake-btn {
+    width: 238px;
+    height: 47px;
+    border-radius: 8px;
+    background: none;
+    border: 1px solid white;
+    color: white;
+    font-size: 20px;
+  }
+}
+
+.results {
+  /* position: absolute; */
+  bottom: -50px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 50px;
+
+  .daily__routine {
+    width: 350px;
+    height: 420px;
+    background-color: #eef7fb;
+    border-radius: 8px;
+
+    p {
+      width: 231px;
+      margin: 0 auto;
+      font-size: 20px;
+    }
+  }
+}
+
+.product {
+  width: 350px;
+  height: 420px;
+  margin-bottom: 3rem;
+  border: 2px solid #f6f6f6;
+  border-radius: 8px;
+
+  img {
+    width: 90%;
+  }
+
+  .info {
+    background-color: #f6f6f6;
+    border-radius: 0px 0px 8px 8px;
+    padding: 3px 7px;
+  }
+}
