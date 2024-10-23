@@ -1,4 +1,8 @@
+import { Navigate, useNavigate, useNavigation } from 'react-router-dom';
+
 function QuestionOne() {
+  const navigate = useNavigate();
+
   return (
     <div className='question-block'>
       <h1>What's your hair type or texture?</h1>
@@ -12,8 +16,18 @@ function QuestionOne() {
         <li>Fine</li>
       </ul>
       <div className='buttons'>
-        <button className='back-btn'>Back</button>
-        <button className='btn'>Next question</button>
+        <button
+          onClick={() => navigate('/home')}
+          className='back-btn'
+        >
+          Back
+        </button>
+        <button
+          onClick={() => navigate('/question-two')}
+          className='btn'
+        >
+          Next question
+        </button>
       </div>
     </div>
   );
