@@ -1,4 +1,4 @@
-.content {
+.home-content {
   position: relative;
 
   img {
@@ -6,6 +6,11 @@
     width: 100%;
     object-fit: cover;
     filter: brightness(0.7);
+  }
+
+  .home-btn {
+    width: 174px;
+    height: 47px;
   }
 }
 
@@ -19,16 +24,14 @@
   color: white;
 
   h1 {
-    font-family: Grange;
-    font-weight: 400;
+    font-weight: 600;
     font-size: 40px;
     line-height: 44px;
   }
 
   p {
-    font-family: Proxima Nova;
-    font-weight: 600;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 20px;
     line-height: 16px;
   }
 }
