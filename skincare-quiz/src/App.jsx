@@ -16,6 +16,10 @@ function App() {
         Component={HomePage}
       />
       <Route
+        path='/'
+        Component={HomePage}
+      />
+      <Route
         path='/question-one'
         Component={QuestionOne}
       />
