@@ -20,7 +20,7 @@ function HomePage() {
           </p>
           <button
             onClick={() => navigate('/question-one')}
-            className='start-btn'
+            className='btn'
           >
             Start the quiz
           </button>

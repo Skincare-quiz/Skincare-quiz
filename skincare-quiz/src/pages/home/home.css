@@ -31,20 +31,4 @@
     font-size: 16px;
     line-height: 16px;
   }
-
-  .start-btn {
-    color: #1c2635;
-    background-color: #c3edff;
-    border: none;
-    width: 174px;
-    height: 47px;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: transform 0.2s ease-in;
-
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.02);
-    }
-  }
 }
