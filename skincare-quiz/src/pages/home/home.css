@@ -1,0 +1,50 @@
+.content {
+  position: relative;
+
+  img {
+    height: 536px;
+    width: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+  }
+}
+
+.headings {
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  gap: 24px;
+  color: white;
+
+  h1 {
+    font-family: Grange;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 44px;
+  }
+
+  p {
+    font-family: Proxima Nova;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .start-btn {
+    color: #1c2635;
+    background-color: #c3edff;
+    border: none;
+    width: 174px;
+    height: 47px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.2s ease-in;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02);
+    }
+  }
+}

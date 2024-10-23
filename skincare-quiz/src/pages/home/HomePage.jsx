@@ -1,7 +1,10 @@
 import './home.css';
 import HomeImage from '../../assets/home-page.jpg';
+import { useNavigate } from 'react-router-dom';
 
 function HomePage() {
+  const navigate = useNavigate();
+
   return (
     <div className='home-content'>
       <div className='content'>
@@ -15,7 +18,12 @@ function HomePage() {
             Take out test to get a personalized self care routine based on your
             needs.
           </p>
-          <button>Start the quiz</button>
+          <button
+            onClick={() => navigate('/question-one')}
+            className='start-btn'
+          >
+            Start the quiz
+          </button>
         </div>
       </div>
     </div>
