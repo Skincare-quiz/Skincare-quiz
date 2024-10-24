@@ -20,7 +20,6 @@ export const setItem = (navigate, route) => {
 /*Using local storage to avoid returning initial state when refreshing */
 export const removeItem = (navigate, route) => {
   const oldValue = JSON.parse(localStorage.getItem('progress'));
-  console.log(oldValue, 'oldValue');
   localStorage.setItem('progress', oldValue - 1);
   navigate(route);
 };
