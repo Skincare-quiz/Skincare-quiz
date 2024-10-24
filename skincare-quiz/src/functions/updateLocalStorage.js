@@ -18,8 +18,14 @@ export const setItem = (navigate, route) => {
 };
 
 /*Using local storage to avoid returning initial state when refreshing */
-export const removeItem = (navigate, route) => {
-  const oldValue = JSON.parse(localStorage.getItem('progress'));
-  localStorage.setItem('progress', oldValue - 1);
+export const removeItem = (navigate, route, currentProducts) => {
+  const oldProgress = JSON.parse(localStorage.getItem('progress'));
+  currentProducts.pop();
+  localStorage.setItem('progress', oldProgress - 1);
+  if (route == '/home') {
+    localStorage.removeItem('products');
+  } else {
+    localStorage.setItem('products', JSON.stringify(currentProducts));
+  }
   navigate(route);
 };
