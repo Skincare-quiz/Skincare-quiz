@@ -5,18 +5,21 @@ import ProductContext from '../../context/ProductContext';
 
 function QuestionOne() {
   const navigate = useNavigate();
-  const [answer, setAnswer] = useState('');
-  const { allProducts, product, setProduct } = useContext(ProductContext);
+  const currentProducts = JSON.parse(localStorage.getItem('products'));
+  const [selectedAnswer, setSelectedAnswer] = useState('');
+  const { allProducts } = useContext(ProductContext);
 
   const filterProducts = (e) => {
     const answer = e.target.textContent.toLowerCase();
-    console.log(answer);
+    setSelectedAnswer(answer);
 
     const option = allProducts
       .get('Hair Styling')
       .filter((product) => product.tags.some((tag) => tag.includes(answer)));
 
-    console.log(option);
+    if (option) {
+      localStorage.setItem('products', JSON.stringify(option));
+    }
   };
 
   return (
@@ -24,14 +27,34 @@ function QuestionOne() {
       <div className='question'>
         <h1>What's your hair type or texture?</h1>
         <ul className='answers'>
-          <li onClick={(e) => filterProducts(e)}>Straight</li>
-          <li onClick={(e) => filterProducts(e)}>Curly</li>
-          <li onClick={(e) => filterProducts(e)}>Wavy</li>
-          <li onClick={(e) => filterProducts(e)}>Fine</li>
+          <li
+            className={selectedAnswer === 'straight' ? 'active' : ''}
+            onClick={(e) => filterProducts(e)}
+          >
+            Straight
+          </li>
+          <li
+            className={selectedAnswer === 'curly' ? 'active' : ''}
+            onClick={(e) => filterProducts(e)}
+          >
+            Curly
+          </li>
+          <li
+            className={selectedAnswer === 'wavy' ? 'active' : ''}
+            onClick={(e) => filterProducts(e)}
+          >
+            Wavy
+          </li>
+          <li
+            className={selectedAnswer === 'fine' ? 'active' : ''}
+            onClick={(e) => filterProducts(e)}
+          >
+            Fine
+          </li>
         </ul>
         <div className='buttons'>
           <button
-            onClick={() => removeItem(navigate, '/home')}
+            onClick={() => removeItem(navigate, '/home', currentProducts)}
             className='back-btn'
           >
             Back
