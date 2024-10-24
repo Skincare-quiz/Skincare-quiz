@@ -12,7 +12,6 @@ import ProductContext from './context/ProductContext';
 
 function App() {
   const [products, setProducts] = useState();
-  const [filterProducts, setFilterProducts] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -20,8 +19,6 @@ function App() {
         'https://jeval.com.au/collections/hair-care/products.json?page=1'
       );
       const parsed = await result.json();
-      console.log(parsed);
-
       const collections = new Map();
 
       /**Making collections based on product type */
@@ -39,7 +36,9 @@ function App() {
 
   return (
     <ProductContext.Provider
-      value={{ allProducts: products, filterProducts, setFilterProducts }}
+      value={{
+        allProducts: products,
+      }}
     >
       <Routes>
         <Route
