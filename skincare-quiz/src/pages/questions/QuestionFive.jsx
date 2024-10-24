@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router-dom';
+import { removeItem, setItem } from '../../functions/updateLocalStorage';
 
 function QuestionFive() {
   const navigate = useNavigate();
+  const progressItem = JSON.parse(localStorage.getItem('progress'));
 
   return (
     <div className='question-block'>
@@ -16,21 +18,21 @@ function QuestionFive() {
         </ul>
         <div className='buttons'>
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => removeItem(navigate, -1)}
             className='back-btn'
           >
             Back
           </button>
           <button
-            onClick={() => navigate('/results')}
+            onClick={() => setItem(navigate, '/results')}
             className='question-btn btn'
           >
-            Discover your results
+            Next question
           </button>
         </div>
       </div>
       <span className='progress'>
-        <p>1/5</p>
+        <p>{progressItem}/5</p>
       </span>
     </div>
   );

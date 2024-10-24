@@ -1,4 +1,5 @@
-import { Navigate, useNavigate, useNavigation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { removeItem, setItem } from '../../functions/updateLocalStorage';
 
 function QuestionOne() {
   const navigate = useNavigate();
@@ -15,13 +16,13 @@ function QuestionOne() {
         </ul>
         <div className='buttons'>
           <button
-            onClick={() => navigate('/home')}
+            onClick={() => removeItem(navigate, '/home')}
             className='back-btn'
           >
             Back
           </button>
           <button
-            onClick={() => navigate('/question-two')}
+            onClick={() => setItem(navigate, '/question-two')}
             className='question-btn btn'
           >
             Next question
