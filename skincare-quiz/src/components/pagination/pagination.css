@@ -1,0 +1,13 @@
+.pagination {
+  .dot {
+    background-color: rgb(218, 217, 217);
+    border-radius: 50%;
+    padding: 0px 5px;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+
+  .active {
+    background-color: grey;
+  }
+}
