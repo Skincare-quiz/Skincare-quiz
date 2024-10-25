@@ -2,14 +2,29 @@ import './results.css';
 import resultsImage from '../../assets/results-page-image.jpg';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import HeartComponent from '../../components/HeartComponent';
+import Pagination from '../../components/pagination/Pagination';
 
 function ResultsPage() {
   const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const indexOfLastPost = currentPage * 2;
+  const indexOfFirstPost = indexOfLastPost - 2;
+  const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost);
+
+  useEffect(() => {
+    const productsItem = JSON.parse(localStorage.getItem('products'));
+    setProducts(productsItem);
+  }, []);
 
   const retakeQuiz = () => {
     localStorage.setItem('progress', 0);
+    localStorage.removeItem('products');
     navigate('/question-one');
   };
+
+  const handlePagination = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className='results-content'>
@@ -48,17 +63,37 @@ function ResultsPage() {
             end of your day.
           </p>
         </div>
-        {/* <div className='product'>
-          <img
-            src={imageSrc}
-            alt='product-image'
-          />
-          <div className='info'>
-            <h3>{product.title}</h3>
-            <p>{product.product_type}</p>
-          </div>
-        </div> */}
+        <div className='products'>
+          {currentPosts.map((product) => (
+            <div
+              className='product'
+              key={product.id}
+            >
+              <img
+                src={product.images[0].src}
+                alt='product-image'
+              />
+              <span className='heart'>
+                <HeartComponent />
+              </span>
+
+              <div className='info'>
+                <h3>{product?.title}</h3>
+                <p>{product?.product_type}</p>
+                <p>${product.variants[0].price}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
+      <span className='pagination'>
+        <Pagination
+          productsPerPage={2}
+          totalProducts={products}
+          handlePagination={handlePagination}
+          currentPage={currentPage}
+        />
+      </span>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 .results-content {
   display: flex;
   flex-direction: column;
+  gap: 20px;
 
   .lemons__image {
     position: relative;
@@ -35,9 +36,6 @@
 }
 
 .results {
-  /* position: absolute; */
-  bottom: -50px;
-  width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,6 +56,11 @@
   }
 }
 
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
 .product {
   width: 350px;
   height: 420px;
@@ -67,6 +70,7 @@
 
   img {
     width: 90%;
+    position: relative;
   }
 
   .info {
@@ -74,4 +78,14 @@
     border-radius: 0px 0px 8px 8px;
     padding: 3px 7px;
   }
+
+  .heart {
+    position: absolute;
+    padding-top: 20px;
+  }
+}
+
+.pagination {
+  margin: 0 auto;
+  padding-bottom: 100px;
 }
