@@ -82,7 +82,3 @@
   color: #677487;
   cursor: pointer;
 }
-
-.active {
-  background-color: var(--c-primary);
-}
