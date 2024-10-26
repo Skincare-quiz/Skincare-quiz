@@ -10,7 +10,7 @@ function ResultsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const indexOfLastPost = currentPage * 2;
   const indexOfFirstPost = indexOfLastPost - 2;
-  const productsItem = JSON.parse(localStorage.getItem('products'));
+  const productsItem = JSON.parse(localStorage.getItem('products')) || [];
   /*Creating a Map in case of duplicating product */
   const productsMap = new Map(
     productsItem.map((product) => [product.id, product])
@@ -21,12 +21,11 @@ function ResultsPage() {
   const retakeQuiz = () => {
     localStorage.setItem('progress', 0);
     localStorage.removeItem('products');
+    localStorage.removeItem('likedProducts');
     navigate('/question-one');
   };
 
   const handlePagination = (pageNumber) => setCurrentPage(pageNumber);
-
-  console.log(products);
 
   return (
     <div className='results-content'>
@@ -36,7 +35,7 @@ function ResultsPage() {
           alt='image'
         />
       </div>
-      <div className='results__headings'>
+      <div className='results-heading'>
         <h1>Build you everyday self care routine.</h1>
         <h2>
           Perfect for if you're looking for soft, nourished skin, our
@@ -65,36 +64,39 @@ function ResultsPage() {
             end of your day.
           </p>
         </div>
-        <div className='products'>
-          {currentPosts.map((product) => (
-            <div
-              className='product'
-              key={product.id}
-            >
-              <img
-                src={product.images[0].src}
-                alt='product-image'
-              />
-              <span className='heart'>
-                <HeartComponent product={product} />
-              </span>
+        <div className='products-pagination'>
+          <div className='products'>
+            {currentPosts.map((product) => (
+              <div
+                className='product'
+                key={product.id}
+              >
+                <img
+                  src={product.images[0].src}
+                  alt='product-image'
+                />
+                <span className='heart'>
+                  <HeartComponent product={product} />
+                </span>
 
-              <div className='info'>
-                <h3>{product?.title}</h3>
-                <p>${product.variants[0].price}</p>
+                <div className='info'>
+                  <h3>{product?.title}</h3>
+                  <p>${product.variants[0].price}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          <span className='pagination'>
+            <Pagination
+              productsPerPage={2}
+              totalProducts={products}
+              handlePagination={handlePagination}
+              currentPage={currentPage}
+            />
+          </span>
         </div>
       </div>
-      <span className='pagination'>
-        <Pagination
-          productsPerPage={2}
-          totalProducts={products}
-          handlePagination={handlePagination}
-          currentPage={currentPage}
-        />
-      </span>
     </div>
   );
 }
