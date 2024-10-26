@@ -1,11 +1,12 @@
 .pagination {
   display: flex;
   justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 20px;
 
   .dot {
     fill: rgb(218, 217, 217);
     border-radius: 60%;
-    padding: 0px 10px;
   }
 
   .active {
@@ -14,5 +15,8 @@
 
   .paginate-btn {
     cursor: pointer;
+    background-color: #eef7fb;
+    border-radius: 50%;
+    padding: 10px;
   }
 }
