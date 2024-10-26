@@ -1,22 +1,22 @@
 import './results.css';
 import resultsImage from '../../assets/results-page-image.jpg';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import HeartComponent from '../../components/HeartComponent';
+import HeartComponent from '../../components/heart/HeartComponent';
 import Pagination from '../../components/pagination/Pagination';
 
 function ResultsPage() {
   const navigate = useNavigate();
-  const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const indexOfLastPost = currentPage * 2;
   const indexOfFirstPost = indexOfLastPost - 2;
+  const productsItem = JSON.parse(localStorage.getItem('products'));
+  /*Creating a Map in case of duplicating product */
+  const productsMap = new Map(
+    productsItem.map((product) => [product.id, product])
+  );
+  const products = [...productsMap.values()];
   const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost);
-
-  useEffect(() => {
-    const productsItem = JSON.parse(localStorage.getItem('products'));
-    setProducts(productsItem);
-  }, []);
 
   const retakeQuiz = () => {
     localStorage.setItem('progress', 0);
@@ -25,6 +25,8 @@ function ResultsPage() {
   };
 
   const handlePagination = (pageNumber) => setCurrentPage(pageNumber);
+
+  console.log(products);
 
   return (
     <div className='results-content'>
@@ -74,12 +76,11 @@ function ResultsPage() {
                 alt='product-image'
               />
               <span className='heart'>
-                <HeartComponent />
+                <HeartComponent product={product} />
               </span>
 
               <div className='info'>
                 <h3>{product?.title}</h3>
-                <p>{product?.product_type}</p>
                 <p>${product.variants[0].price}</p>
               </div>
             </div>
