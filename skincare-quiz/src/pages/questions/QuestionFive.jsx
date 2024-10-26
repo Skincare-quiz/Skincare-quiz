@@ -35,18 +35,8 @@ function QuestionFive() {
         break;
     }
 
-    if (optionOne) {
-      optionOne.forEach((option) => {
-        currentProducts.push(option);
-      });
-      localStorage.setItem('products', JSON.stringify(currentProducts));
-    }
-    if (optionTwo) {
-      optionTwo.forEach((option) => {
-        currentProducts.push(option);
-      });
-      localStorage.setItem('products', JSON.stringify(currentProducts));
-    }
+    const products = [...optionOne, ...optionTwo, ...currentProducts];
+    localStorage.setItem('products', JSON.stringify(products));
   };
 
   return (

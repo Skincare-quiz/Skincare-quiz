@@ -71,18 +71,8 @@ function QuestionFour() {
         break;
     }
 
-    if (optionOne) {
-      optionOne.forEach((option) => {
-        currentProducts.push(option);
-      });
-      localStorage.setItem('products', JSON.stringify(currentProducts));
-    }
-    if (optionTwo) {
-      optionTwo.forEach((option) => {
-        currentProducts.push(option);
-      });
-      localStorage.setItem('products', JSON.stringify(currentProducts));
-    }
+    const options = [...optionOne, ...optionTwo, ...currentProducts];
+    localStorage.setItem('products', JSON.stringify(options));
   };
 
   return (
