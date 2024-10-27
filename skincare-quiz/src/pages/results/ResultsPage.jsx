@@ -10,12 +10,7 @@ function ResultsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const indexOfLastPost = currentPage * 2;
   const indexOfFirstPost = indexOfLastPost - 2;
-  const productsItem = JSON.parse(localStorage.getItem('products')) || [];
-  /*Creating a Map in case of duplicating product */
-  const productsMap = new Map(
-    productsItem.map((product) => [product.id, product])
-  );
-  const products = [...productsMap.values()];
+  const products = JSON.parse(localStorage.getItem('products')) || [];
   const currentPosts = products.slice(indexOfFirstPost, indexOfLastPost);
 
   const retakeQuiz = () => {

@@ -36,7 +36,12 @@ function QuestionFive() {
     }
 
     const products = [...optionOne, ...optionTwo, ...currentProducts];
-    localStorage.setItem('products', JSON.stringify(products));
+    /*Creating a map in case of duplicating products */
+    const productsMap = new Map(
+      products.map((product) => [product.id, product])
+    );
+    const updatedProducts = [...productsMap.values()];
+    localStorage.setItem('products', JSON.stringify(updatedProducts));
   };
 
   return (
@@ -86,7 +91,7 @@ function QuestionFive() {
             onClick={() => setItem(navigate, '/results')}
             className='question-btn btn'
           >
-            Next question
+            Discover your results
           </button>
         </div>
       </div>
