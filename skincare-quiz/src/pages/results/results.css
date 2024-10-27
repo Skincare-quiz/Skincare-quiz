@@ -40,14 +40,12 @@
 
 .results {
   position: absolute;
+  top: 500px;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
   justify-content: center;
   text-align: center;
-  width: 80%;
   gap: 40px;
-  top: 500px;
 
   .daily__routine {
     width: 350px;
@@ -69,6 +67,9 @@
 
   .products {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 40px;
   }
 }
