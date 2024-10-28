@@ -44,8 +44,8 @@ function HeartComponent({ product, toggleButton, setToggleButton }) {
     /**Updating oder of products */
     const products = JSON.parse(localStorage.getItem('products'));
     const index = products.indexOf(
-      products.filter((productObj) => productObj.id === product.id)
-    )[0];
+      products.filter((productObj) => productObj.id === product.id)[0]
+    );
     const removedProduct = products.splice(index, 1)[0];
     products.push(removedProduct);
     localStorage.setItem('products', JSON.stringify(products));
