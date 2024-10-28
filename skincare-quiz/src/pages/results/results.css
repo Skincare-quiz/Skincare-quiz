@@ -24,7 +24,13 @@
   text-align: center;
   width: 50%;
   left: 25%;
-  top: 15%;
+  top: 10%;
+
+  h1 {
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 50px;
+  }
 
   .retake-btn {
     width: 238px;
@@ -44,7 +50,6 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  text-align: center;
   gap: 40px;
 
   .daily__routine {
@@ -52,6 +57,10 @@
     height: 420px;
     background-color: #eef7fb;
     border-radius: 8px;
+
+    .routine-heading {
+      text-align: center;
+    }
 
     p {
       width: 231px;
@@ -64,6 +73,7 @@
 .products-pagination {
   display: flex;
   flex-direction: column;
+  text-align: center;
 
   .products {
     display: flex;

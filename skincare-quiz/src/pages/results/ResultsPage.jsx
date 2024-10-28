@@ -45,12 +45,12 @@ function ResultsPage() {
           onClick={retakeQuiz}
           className='retake-btn'
         >
-          Retake quiz
+          Retake the quiz
         </button>
       </div>
       <div className='results'>
         <div className='daily__routine'>
-          <h2>Daily routine</h2>
+          <h2 className='routine-heading'>Daily routine</h2>
           <p>
             Perfect for if you're looking for soft, nourished skin, our
             moisturizing body washes are made with skin-natural nutrients that
