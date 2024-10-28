@@ -8,6 +8,7 @@ import Pagination from '../../components/pagination/Pagination';
 function ResultsPage() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
+  const [toggleButton, setToggleButton] = useState(false);
   const indexOfLastPost = currentPage * 2;
   const indexOfFirstPost = indexOfLastPost - 2;
   const products = JSON.parse(localStorage.getItem('products')) || [];
@@ -86,7 +87,11 @@ function ResultsPage() {
                   alt='product-image'
                 />
                 <span className='heart'>
-                  <HeartComponent product={product} />
+                  <HeartComponent
+                    product={product}
+                    toggleButton={toggleButton}
+                    setToggleButton={setToggleButton}
+                  />
                 </span>
 
                 <div className='info'>
@@ -95,7 +100,7 @@ function ResultsPage() {
                 </div>
               </div>
             ))}
-            {currentPage !== 3 && (
+            {currentPage !== Math.ceil(products.length / 2) && (
               <span
                 className='paginate-btn'
                 onClick={() => handlePagination(currentPage + 1)}
